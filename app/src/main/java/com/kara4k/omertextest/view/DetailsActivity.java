@@ -50,10 +50,10 @@ public class DetailsActivity extends BaseActivity {
 
         if (post == null) return;
 
-        String photoId = getString(R.string.details_photo_id) + post.getId().toString();
-        String userId = getString(R.string.details_user_id) + post.getUserId().toString();
-        String title = getString(R.string.details_post_title) + post.getTitle();
-        String body = getString(R.string.details_post_body) + post.getBody();
+        String photoId = getString(R.string.details_photo_id, post.getId().toString());
+        String userId = getString(R.string.details_user_id, post.getUserId().toString());
+        String title = getString(R.string.details_post_title, post.getTitle());
+        String body = getString(R.string.details_post_body, post.getBody());
 
         mPhotoIdTV.setText(photoId);
         mUserIdTV.setText(userId);

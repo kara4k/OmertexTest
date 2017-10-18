@@ -2,9 +2,9 @@
     <string name="app_name">OmertexTest</string>
     <string name="menu_item_refresh">Refresh</string>
     <string name="activity_title_details">Details</string>
-    <string name="details_photo_id">Photo id: </string>
-    <string name="details_user_id">User id: </string>
-    <string name="details_post_title">Title: </string>
-    <string name="details_post_body">Body: </string>
+    <string name="details_photo_id">Photo id: %1$s</string>
+    <string name="details_user_id">User id: %1$s</string>
+    <string name="details_post_title">Title: %1$s</string>
+    <string name="details_post_body">Body: %1$s</string>
     <string name="dialog_loading">Loading</string>
 </resources>
