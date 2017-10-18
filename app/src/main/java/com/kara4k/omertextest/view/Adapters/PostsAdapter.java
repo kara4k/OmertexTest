@@ -55,27 +55,27 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.Holder> {
 
     class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        @BindView(R.id.thumb_image_view) ImageView mThumbIV;
-        @BindView(R.id.title_text_view) TextView mTitleTV;
-        @BindView(R.id.body_text_view) TextView mBodyTV;
+        @BindView(R.id.thumb_image_view) ImageView mThumbImageView;
+        @BindView(R.id.title_text_view) TextView mTitleTextView;
+        @BindView(R.id.body_text_view) TextView mBodyTextView;
 
         private ReadyPost mReadyPost;
         private Context mContext;
 
 
-        public Holder(View itemView) {
+        Holder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
         }
 
-        public void onBind(ReadyPost post) {
+        void onBind(ReadyPost post) {
             mReadyPost = post;
 
-            mTitleTV.setText(post.getTitle());
-            mBodyTV.setText(post.getBody());
-            Picasso.with(mContext).load(post.getThumbUrl()).into(mThumbIV);
+            mTitleTextView.setText(post.getTitle());
+            mBodyTextView.setText(post.getBody());
+            Picasso.with(mContext).load(post.getThumbUrl()).into(mThumbImageView);
         }
 
         @Override

@@ -19,15 +19,15 @@ public class DetailsActivity extends BaseActivity {
 
 
     @BindView(R.id.photo_image_view)
-    ImageView mPhotoIV;
+    ImageView mPhotoImageView;
     @BindView(R.id.photo_id_text_view)
-    TextView mPhotoIdTV;
+    TextView mPhotoIdTextView;
     @BindView(R.id.user_id_text_view)
-    TextView mUserIdTV;
+    TextView mUserIdTextView;
     @BindView(R.id.title_text_view)
-    TextView mTitleTV;
+    TextView mTitleTextView;
     @BindView(R.id.body_text_view)
-    TextView mBodyTV;
+    TextView mBodyTextView;
 
 
     @Override
@@ -55,11 +55,11 @@ public class DetailsActivity extends BaseActivity {
         String title = getString(R.string.details_post_title, post.getTitle());
         String body = getString(R.string.details_post_body, post.getBody());
 
-        mPhotoIdTV.setText(photoId);
-        mUserIdTV.setText(userId);
-        mTitleTV.setText(title);
-        mBodyTV.setText(body);
-        Picasso.with(this).load(post.getPhotoSmallUrl()).into(mPhotoIV);
+        mPhotoIdTextView.setText(photoId);
+        mUserIdTextView.setText(userId);
+        mTitleTextView.setText(title);
+        mBodyTextView.setText(body);
+        Picasso.with(this).load(post.getPhotoSmallUrl()).into(mPhotoImageView);
     }
 
     @Override
