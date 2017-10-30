@@ -43,8 +43,7 @@ public class DetailsActivity extends BaseActivity {
     }
 
     private void setupViews() {
-
-        if (getIntent().getExtras() == null) return;
+        if (getIntent() == null) return;
 
         ReadyPost post = (ReadyPost) getIntent().getSerializableExtra(POST);
 

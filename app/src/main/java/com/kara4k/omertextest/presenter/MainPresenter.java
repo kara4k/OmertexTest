@@ -22,6 +22,7 @@ import io.reactivex.Observable;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -45,19 +46,21 @@ public class MainPresenter implements SingleObserver<List<ReadyPost>> {
     @Inject
     PhotoMapper mPhotoMapper;
 
+    private CompositeDisposable mCompositeDisposable;
+
 
     @Inject
     public MainPresenter() {
-
+        mCompositeDisposable = new CompositeDisposable();
     }
 
     public void onStart() {
         mMainView.onShowDialog(mContext.getString(R.string.dialog_loading));
 
-        Observable<Post> postObservable = mPostsApi.getPosts().flatMap(mPostMapper);
+        Observable<Post> postsObservable = mPostsApi.getPosts().flatMap(mPostMapper);
         Observable<Urls> photosObservable = mPhotosApi.getPhotos().flatMap(mPhotoMapper);
 
-        Observable.zip(postObservable, photosObservable, mReadyPostMapper)
+        Observable.zip(postsObservable, photosObservable, mReadyPostMapper)
                 .toList()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -66,7 +69,7 @@ public class MainPresenter implements SingleObserver<List<ReadyPost>> {
 
     @Override
     public void onSubscribe(@NonNull Disposable d) {
-
+mCompositeDisposable.add(d);
     }
 
     @Override
@@ -79,5 +82,9 @@ public class MainPresenter implements SingleObserver<List<ReadyPost>> {
     public void onError(@NonNull Throwable e) {
         mMainView.onHideDialog();
         mMainView.onShowMessage(e.getMessage());
+    }
+
+    public void onDestroy() {
+        mCompositeDisposable.dispose();
     }
 }

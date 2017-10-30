@@ -86,4 +86,10 @@ public class MainActivity extends BaseActivity implements IMainView {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.onDestroy();
+        super.onDestroy();
+    }
 }

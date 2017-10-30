@@ -28,7 +28,7 @@ public class MainModule {
 
     @Provides
     @PerActivity
-    PostsApi provideUserApi(@Named(AppModule.POSTS) Retrofit retrofit) {
+    PostsApi providePostsApi(@Named(AppModule.POSTS) Retrofit retrofit) {
         return retrofit.create(PostsApi.class);
     }
 

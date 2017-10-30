@@ -18,7 +18,8 @@ public class PhotoMapper implements Function<Response, Observable<Urls>> {
 
     @Override
     public Observable<Urls> apply(@NonNull Response response) throws Exception {
-        return Observable.just(response).map(r -> r.getResults())
+        return Observable.just(response)
+                .map(r -> r.getResults())
                 .flatMapIterable(results -> results)
                 .map(result -> result.getUrls());
     }
